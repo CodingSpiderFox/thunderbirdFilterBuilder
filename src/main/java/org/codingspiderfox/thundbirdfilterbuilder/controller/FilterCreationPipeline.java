@@ -1,3 +1,5 @@
+package org.codingspiderfox.thundbirdfilterbuilder.controller;
+
 public class FilterCreationPipeline implements IFilterCreationPipeline {
 
     FilterSourceReader filterSourceReader;
@@ -6,6 +8,8 @@ public class FilterCreationPipeline implements IFilterCreationPipeline {
 
     FilterOutputWriter filterOutputWriter;
 
+    private FilterSourceConfig filterSourceConfig;
+
     public void processPipeline(FilterSourceConfig filterSourceConfig) {
         FilterConfig filterConfig = filterSourceReader.processParameters(filterSourceConfig);
         FilterModel filterModel = filterModelWriter.writeModel(filterConfig);
@@ -13,6 +17,9 @@ public class FilterCreationPipeline implements IFilterCreationPipeline {
     }
 
     public void processPipeline() {
+        FilterConfig filterConfig = filterSourceReader.processParameters(filterSourceConfig);
+        FilterModel filterModel = filterModelWriter.writeModel(filterConfig);
+        FilterSink filterSink = filterOutputWriter.writeOutput(filterModel);
 
     }
 }
