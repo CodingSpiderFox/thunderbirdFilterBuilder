@@ -1,12 +1,17 @@
 package org.codingspiderfox.thundbirdfilterbuilder.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 public class FilterCreationPipeline implements IFilterCreationPipeline {
 
-    FilterSourceReader filterSourceReader;
+    protected IFilterSourceReader filterSourceReader;
 
-    FilterModelWriter filterModelWriter;
+    protected IFilterModelWriter filterModelWriter;
 
-    FilterOutputWriter filterOutputWriter;
+    protected IFilterOutputWriter filterOutputWriter;
 
     private FilterSourceConfig filterSourceConfig;
 
@@ -20,6 +25,10 @@ public class FilterCreationPipeline implements IFilterCreationPipeline {
         FilterConfig filterConfig = filterSourceReader.processParameters(filterSourceConfig);
         FilterModel filterModel = filterModelWriter.writeModel(filterConfig);
         FilterSink filterSink = filterOutputWriter.writeOutput(filterModel);
+
+        URL url = new URL(as);
+        InputStream in = url.openStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
 
     }
 }
