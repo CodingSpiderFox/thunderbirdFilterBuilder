@@ -12,4 +12,7 @@ public class FilterRule {
     private String filterExpressionString;
 
 
+    public String[] getFilterExpressionString() {
+        return null;
+    }
 }

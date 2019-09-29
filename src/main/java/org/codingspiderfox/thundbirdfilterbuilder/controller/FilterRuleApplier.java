@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.logging.Filter;
 
-public class FilterRuleApplier<T extends Message> {
+public class FilterRuleApplier<T extends MessageInputStream> {
 
     ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator();
 

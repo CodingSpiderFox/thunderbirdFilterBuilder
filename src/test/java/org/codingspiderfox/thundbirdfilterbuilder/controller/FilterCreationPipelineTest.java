@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import java.io.IOException;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
@@ -24,6 +26,10 @@ public class FilterCreationPipelineTest {
 
         when(filterModelWriterMock.writeModel(any(FilterConfig.class))).thenReturn(new FilterModel());
         verify(filterModelWriterMock).writeModel(any(FilterConfig.class));
-        uut.processPipeline();
+        try {
+            uut.processPipeline();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

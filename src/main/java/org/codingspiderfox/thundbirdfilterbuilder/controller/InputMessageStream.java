@@ -1,4 +1,4 @@
 package org.codingspiderfox.thundbirdfilterbuilder.controller;
 
-public class InputMessageStream {
+public class InputMessageStream extends MessageInputStream {
 }
