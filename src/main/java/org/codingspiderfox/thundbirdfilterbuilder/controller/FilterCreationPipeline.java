@@ -1,8 +1,10 @@
 package org.codingspiderfox.thundbirdfilterbuilder.controller;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FilterCreationPipeline implements IFilterCreationPipeline {
@@ -16,17 +18,18 @@ public class FilterCreationPipeline implements IFilterCreationPipeline {
     private FilterSourceConfig filterSourceConfig;
 
     public void processPipeline(FilterSourceConfig filterSourceConfig) {
-        FilterConfig filterConfig = filterSourceReader.processParameters(filterSourceConfig);
+        FilterConfig filterConfig;
+        filterConfig = filterSourceReader.processParameters(filterSourceConfig);
         FilterModel filterModel = filterModelWriter.writeModel(filterConfig);
         FilterSink filterSink = filterOutputWriter.writeOutput(filterModel);
     }
 
-    public void processPipeline() {
+    public void processPipeline() throws IOException {
         FilterConfig filterConfig = filterSourceReader.processParameters(filterSourceConfig);
         FilterModel filterModel = filterModelWriter.writeModel(filterConfig);
         FilterSink filterSink = filterOutputWriter.writeOutput(filterModel);
 
-        URL url = new URL(as);
+        URL url = new URL("as");
         InputStream in = url.openStream();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
 
