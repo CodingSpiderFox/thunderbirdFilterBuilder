@@ -1,8 +1,7 @@
 package org.codingspiderfox.thundbirdfilterbuilder.controller;
 
-import org.codingspiderfox.thundbirdfilterbuilder.controller.FilterCreationPipeline;
+import org.codingspiderfox.thundbirdfilterbuilder.controller.config.FilterConfig;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.IOException;

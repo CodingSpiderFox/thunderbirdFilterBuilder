@@ -1,4 +1,4 @@
-package org.codingspiderfox.thundbirdfilterbuilder.controller;
+package org.codingspiderfox.thundbirdfilterbuilder.controller.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
