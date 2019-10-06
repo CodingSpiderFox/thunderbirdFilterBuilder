@@ -14,6 +14,13 @@ public class FilterStringWriterThunderbirdImplTest {
     public void createsSingleSeparateFilterForSingleKeywordCorrectly() throws IOException {
         Collection<String> filterStrings = Arrays.asList("abc");
         String result = FilterStringWriterThunderbirdImpl.writeAllKeywordsToSeparateFilterRules(filterStrings);
-        assertEquals("", result);
+        assertEquals("version=\"9\"\r\n" +
+                "logging=\"yes\"\r\n" +
+                "name=\"subject contains abc\"\r\n" +
+                "enabled=\"yes\"\r\n" +
+                "type=\"17\"\r\n" +
+                "action=\"Move to folder\"\r\n" +
+                "actionValue=\"mailbox://nobody@Feeds/Trash\"\r\n" +
+                "condition=\"AND (subject,contains,abc)\"\r\n", result);
     }
 }

@@ -6,13 +6,13 @@ import java.util.Collection;
 public class FilterStringWriterThunderbirdImpl implements IFilterStringWriter {
 
     public static String writeAllKeywordsToSeparateFilterRules(Collection<String> inputStrings) throws IOException {
-        String result = ("version=\"9\"\n") + ("logging=\"yes\"\r\n");
+        String result = ("version=\"9\"\r\n") + ("logging=\"yes\"\r\n");
 
         for (String inputString : inputStrings) {
             result += ("name=\"subject contains " + inputString + "\"\r\n")
-                    + ("enabled=\"yes\"\n")
-                    + ("type=\"17\"\n") + ("action=\"Move to folder\"\n")
-                    + ("actionValue=\"mailbox://nobody@Feeds/Thrash\"\n") + ("condition=\"");
+                    + ("enabled=\"yes\"\r\n")
+                    + ("type=\"17\"\r\n") + ("action=\"Move to folder\"\r\n")
+                    + ("actionValue=\"mailbox://nobody@Feeds/Trash\"\r\n") + ("condition=\"");
             result += ("AND (subject,contains,") + inputString + ")\"\r\n";
         }
 
@@ -26,10 +26,10 @@ public class FilterStringWriterThunderbirdImpl implements IFilterStringWriter {
          * (body,contains,text)"
          */
 
-        String result = ("version=\"9\"\n") + ("logging=\"yes\"\r\n") + ("name=\"global\"\n")
-                + ("enabled=\"yes\"\n")
-                + ("type=\"17\"\n") + ("action=\"Move to folder\"\n")
-                + ("actionValue=\"mailbox://nobody@Feeds/Thrash\"\n") + ("condition=\"");
+        String result = ("version=\"9\"\r\n") + ("logging=\"yes\"\r\n") + ("name=\"global\"\r\n")
+                + ("enabled=\"yes\"\r\n")
+                + ("type=\"17\"\r\n") + ("action=\"Move to folder\"\r\n")
+                + ("actionValue=\"mailbox://nobody@Feeds/Trash\"\r\n") + ("condition=\"");
 
         for (String inputString : inputStrings) {
             result += ("OR (subject,contains,") + inputString + ") OR (body,contains," + inputString + ") ";
