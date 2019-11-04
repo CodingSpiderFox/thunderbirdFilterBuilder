@@ -23,4 +23,9 @@ public class FilterStringWriterThunderbirdImplTest {
                 "actionValue=\"mailbox://nobody@Feeds/Trash\"\r\n" +
                 "condition=\"AND (subject,contains,abc)\"\r\n", result);
     }
+
+    @Test
+    public void cewatesSeparateFiltersForTwoKeywordsCorrectly() {
+        
+    }
 }
